@@ -24,7 +24,9 @@ error. The app then swallows that error and shows an empty list.
 
 Passkey Enabler reads the account list the way the specification allows: only the ID is
 required, and an account without a display name is shown by its user name, or by its ID if it
-has neither. Once a yubikit-android release handles this itself, the app will rely on that.
+has neither. The same fix is proposed for yubikit-android in
+[Yubico/yubikit-android#410](https://github.com/Yubico/yubikit-android/pull/410); once a release
+includes it, the app will rely on the library again.
 
 ## Features
 

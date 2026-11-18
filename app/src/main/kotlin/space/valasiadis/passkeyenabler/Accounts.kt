@@ -19,7 +19,7 @@ private val logger = LoggerFactory.getLogger("Accounts")
  *
  * yubikit up to 3.3.0 insists on a name and a display name for each, which CTAP does not promise
  * and many keys leave out, and fails on the whole list when one is missing. Until a release takes
- * the fix (valasiadis/yubikit-android, fix/multiple-assertions-missing-display-name), the key's
+ * the fix (https://github.com/Yubico/yubikit-android/pull/410), the key's
  * answers are read here and taken as that fix takes them: only the ID is needed, a missing name is
  * empty, and a missing display name falls back to the name.
  */
