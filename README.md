@@ -11,6 +11,21 @@ Built for the Pixel 10 Pro XL running GrapheneOS, and should work on other Andro
 It needs no Google Play Services. It is built on Yubico's
 [yubikit-android](https://github.com/Yubico/yubikit-android) library.
 
+## Why
+
+Yubico's own *YubiKey Passkey Enabler* does the same job, but on GrapheneOS it fails at a
+common case: when the key holds passkeys for **two or more accounts on the same site** and you
+sign in without typing a username, its account picker says *"Select a passkey to login
+(0 available)"* and stays empty, so you can't sign in at all.
+
+That happens because many keys don't return the accounts' display names (CTAP only promises the
+account ID), and the yubikit-android library it uses treats a missing display name as an
+error. The app then swallows that error and shows an empty list.
+
+Passkey Enabler reads the account list the way the specification allows: only the ID is
+required, and an account without a display name is shown by its user name, or by its ID if it
+has neither. Once a yubikit-android release handles this itself, the app will rely on that.
+
 ## Features
 
 - **Sign in and create passkeys** on a security key over **NFC** or **USB**.
@@ -106,46 +121,6 @@ Requirements: JDK 21 (Gradle downloads one if needed) and the Android SDK with p
 Debug builds install as a separate app, **Passkey Enabler (test)**
 (`space.valasiadis.passkeyenabler.debug`), so they don't collide with the release version from
 Obtainium.
-
-Release builds without signing secrets fall back to the debug key, so they still install
-locally.
-
-## Releasing (maintainers)
-
-The [Release workflow](.github/workflows/release.yml) builds a signed APK and publishes a
-GitHub release whenever a `vX.Y.Z` tag is pushed. The version code is derived from the tag
-(`v1.2.3` → 10203), so minor and patch have to stay ≤ 99.
-
-**One-time setup: create a signing key and add it as secrets.**
-
-```sh
-keytool -genkeypair -v -keystore passkeyenabler-release.jks -alias passkeyenabler \
-  -keyalg RSA -keysize 4096 -validity 10000 -dname "CN=Passkey Enabler"
-base64 -w0 passkeyenabler-release.jks > passkeyenabler-release.jks.b64
-```
-
-In the GitHub repository go to *Settings → Secrets and variables → Actions* and add:
-
-| Secret | Value |
-| --- | --- |
-| `SIGNING_KEYSTORE_BASE64` | contents of `passkeyenabler-release.jks.b64` |
-| `SIGNING_STORE_PASSWORD` | the keystore password |
-| `SIGNING_KEY_ALIAS` | `passkeyenabler` |
-| `SIGNING_KEY_PASSWORD` | the key password (same as the keystore password unless you chose otherwise) |
-
-Keep `passkeyenabler-release.jks` and its password backed up somewhere safe, and never commit
-them. If the key is lost, existing installs can't be updated and everyone has to uninstall
-and reinstall.
-
-**Each release:**
-
-```sh
-git tag v1.0.0
-git push origin v1.0.0
-```
-
-The workflow refuses to publish if a secret is missing or the APK turns out debug-signed. It can
-also be re-run for an existing tag from the *Actions* tab ("Run workflow").
 
 ## License
 
