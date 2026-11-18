@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2014-2026 The Android Password Store Authors. All Rights Reserved.
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<!--
+  What the app is for and where to switch it on, and the browsers it has been told to trust, as a
+  block of rows under a heading the way the fork's settings set theirs out.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:fitsSystemWindows="true">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/password_list_margin"
+    android:paddingVertical="@dimen/spacing_xlarge">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingHorizontal="@dimen/list_section_header_inset"
+      android:text="@string/main_title"
+      android:textAppearance="?attr/textAppearanceHeadlineSmall"
+      android:textColor="?attr/colorOnSurface" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_medium"
+      android:paddingHorizontal="@dimen/list_section_header_inset"
+      android:text="@string/main_body"
+      android:textAppearance="?attr/textAppearanceBodyMedium"
+      android:textColor="?attr/colorOnSurfaceVariant" />
+
+    <com.google.android.material.button.MaterialButton
+      android:id="@+id/open_settings"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_large"
+      android:text="@string/main_open_settings" />
+
+    <include
+      android:id="@+id/trusted_header"
+      layout="@layout/list_section_header" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/trusted_none"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:paddingHorizontal="@dimen/list_section_header_inset"
+      android:text="@string/main_trusted_none"
+      android:textAppearance="?attr/textAppearanceBodyMedium"
+      android:textColor="?attr/colorOnSurfaceVariant" />
+
+    <space.valasiadis.passkeyenabler.ui.ListBlock
+      android:id="@+id/trusted_rows"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" />
+
+  </LinearLayout>
+
+</ScrollView>

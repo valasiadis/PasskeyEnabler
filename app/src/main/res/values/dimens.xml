@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2014-2026 The Android Password Store Authors. All Rights Reserved.
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<!-- The measures the sheets are laid out with, taken as they are from the Password Store fork. -->
+<resources>
+  <dimen name="spacing_small">8dp</dimen>
+  <dimen name="spacing_medium">12dp</dimen>
+  <dimen name="spacing_large">16dp</dimen>
+  <dimen name="spacing_xlarge">24dp</dimen>
+  <dimen name="spacing_xxlarge">48dp</dimen>
+
+  <!--
+    The corners of a list that reads as one block, as the system settings draw theirs: rounded
+    fully where the block starts and ends, and only slightly where its rows meet.
+  -->
+  <dimen name="list_outer_corner_radius">20dp</dimen>
+  <dimen name="list_inner_corner_radius">4dp</dimen>
+  <dimen name="list_item_gap">2dp</dimen>
+  <dimen name="list_icon_circle">40dp</dimen>
+  <dimen name="list_icon_circle_padding">8dp</dimen>
+  <dimen name="list_icon_text_gap">12dp</dimen>
+  <dimen name="list_section_header_inset">8dp</dimen>
+  <dimen name="list_section_header_height">48dp</dimen>
+  <!-- A row half as tall again as a plain list row: every row in a choice is something to tap. -->
+  <dimen name="password_row_height">72dp</dimen>
+  <dimen name="password_list_margin">16dp</dimen>
+  <dimen name="activity_horizontal_margin">16dp</dimen>
+
+  <!--
+    The mark in the security key prompt: the whole of it, the middle of it that stays at full
+    strength, and the ring that runs between the two in place of the mark's own outer ring.
+  -->
+  <dimen name="card_prompt_mark_size">64dp</dimen>
+  <dimen name="card_prompt_mark_core">40dp</dimen>
+  <!-- A mark that is not a circle is drawn to fit inside the ring rather than cropped by it. -->
+  <dimen name="card_prompt_mark_fit">30dp</dimen>
+  <dimen name="card_prompt_ring_size">53dp</dimen>
+  <dimen name="card_prompt_ring_thickness">3dp</dimen>
+</resources>

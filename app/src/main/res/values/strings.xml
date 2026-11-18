@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- What the system lists for this provider. -->
+  <string name="entry_account">Security key</string>
+  <string name="entry_get_detail">Use a passkey on your security key</string>
+  <string name="entry_create_detail">Save the passkey on your security key</string>
+
+  <!-- The screen opened from the launcher. -->
+  <string name="main_title">Passkeys on a security key</string>
+  <string name="main_body">This app lets websites and apps use the passkeys on a FIDO2 security key, tapped on the back of the phone or plugged in.\n\nTo use it, choose it as a passkey provider under Passwords, passkeys &amp; accounts. When a site asks for a passkey, pick “Security key”.</string>
+  <string name="main_open_settings">Open passkey settings</string>
+  <string name="main_trusted_header">Browsers you trust</string>
+  <string name="main_trusted_none">None yet. A browser is added the first time it asks for a passkey and you trust it.</string>
+  <string name="main_trusted_detail" translatable="false">%1$s\n%2$s</string>
+  <string name="main_forget">Forget</string>
+  <string name="main_forget_title">Forget %1$s?</string>
+  <string name="main_forget_message">It will have to be trusted again before it can sign in to websites with your security key.</string>
+
+  <!-- Sheet titles. -->
+  <string name="title_get">Sign in to %1$s</string>
+  <string name="title_create">Create a passkey for %1$s</string>
+
+  <!-- The security key prompt, worded as in the Password Store fork. -->
+  <string name="security_key_present">Present your security key.</string>
+  <string name="security_key_present_usb">Plug in your security key.</string>
+  <string name="security_key_present_any">Present your security key, or plug it in.</string>
+  <string name="security_key_hold_title">Security key detected</string>
+  <string name="security_key_hold">Keep the security key on your phone until this finishes.</string>
+  <string name="security_key_hold_usb">Keep the security key plugged in until this finishes.</string>
+  <string name="security_key_touch_title">Touch your security key</string>
+  <string name="security_key_done_title">Done</string>
+  <string name="security_key_pin_title">Security key PIN</string>
+  <string name="pin_hint">PIN</string>
+  <plurals name="pin_min_length">
+    <item quantity="one">At least %d character</item>
+    <item quantity="other">At least %d characters</item>
+  </plurals>
+  <string name="security_key_wrong_pin">Wrong PIN.</string>
+  <plurals name="security_key_wrong_pin_remaining">
+    <item quantity="one">Wrong PIN. %d try left before the PIN locks.</item>
+    <item quantity="other">Wrong PIN. %d tries left before the PIN locks.</item>
+  </plurals>
+  <string name="security_key_comm_failed">Couldn\'t read the security key. Present it again and hold it still until this finishes.</string>
+  <string name="security_key_comm_failed_usb">Couldn\'t reach the security key. Unplug it, plug it back in, and leave it there until this finishes.</string>
+  <string name="security_key_comm_failed_any">Couldn\'t reach the security key. Present it again, or plug it back in.</string>
+
+  <!-- Choosing an account. -->
+  <string name="pick_title">Choose an account</string>
+  <string name="pick_unnamed">Account without a name</string>
+  <string name="pick_user_id">ID %1$s</string>
+
+  <!-- Failures. -->
+  <string name="error_title">Couldn\'t use the security key</string>
+  <string name="security_key_reader_unavailable">There is no way to reach a security key: NFC is unavailable or switched off, and this phone cannot take one plugged in.</string>
+  <string name="security_key_pin_blocked">This security key\'s PIN is locked after too many wrong tries. Only resetting the key unlocks it, and that erases every passkey on it.</string>
+  <string name="security_key_reinsert">Too many wrong PINs in a row. Unplug the security key, plug it back in, and try again.</string>
+  <string name="security_key_reinsert_nfc">Too many wrong PINs in a row. Take the security key away from the phone, then try again.</string>
+  <string name="security_key_no_pin">This security key has no PIN. Set one, for example with the Yubico Authenticator or ykman, then try again.</string>
+  <string name="security_key_pin_change">This security key wants its PIN changed before it is used again. Change it, for example with the Yubico Authenticator or ykman, then try again.</string>
+  <string name="security_key_uv_blocked">The security key\'s fingerprint check is locked. Use its PIN instead.</string>
+  <string name="security_key_no_credentials">This security key holds no passkey for %1$s.</string>
+  <string name="security_key_excluded">This security key already holds a passkey for this account on %1$s.</string>
+  <string name="security_key_full">This security key has no room for another passkey. Delete one you no longer use, then try again.</string>
+  <string name="security_key_unsupported">This security key can\'t make the kind of passkey %1$s asks for.</string>
+  <string name="security_key_touch_timeout">The security key wasn\'t touched in time.</string>
+  <string name="security_key_denied">The security key turned the request down.</string>
+  <string name="security_key_error_generic">The security key refused (status %1$s).</string>
+  <string name="request_invalid">The request for a passkey couldn\'t be read.</string>
+
+  <!-- Who is asking. -->
+  <string name="trust_title">Trust %1$s as a browser?</string>
+  <string name="trust_message">%1$s wants to sign in to websites with your security key, naming the website itself.\n\nOnly trust an app you installed as a web browser. An app trusted here can ask for the passkey of any website.\n\nSigning certificate (SHA-256):\n%2$s</string>
+  <string name="trust_confirm">Trust</string>
+  <string name="app_not_linked">%1$s isn\'t allowed to use passkeys for %2$s: the website doesn\'t name it as its app.</string>
+  <string name="app_link_unreachable">Couldn\'t check that %1$s may use passkeys for %2$s. Check the connection and try again.</string>
+  <string name="caller_unknown">The app asking for a passkey couldn\'t be identified.</string>
+
+  <string name="dialog_ok">OK</string>
+  <string name="dialog_cancel">Cancel</string>
+  <string name="setup_back">Back</string>
+  <string name="setup_next">Next</string>
+</resources>

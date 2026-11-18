@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2014-2026 The Android Password Store Authors. All Rights Reserved.
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<!--
+  What the app says while a card is in its hands: where to put it, to hold it there, to touch it,
+  to lift it off. Said in the order the Yubico Authenticator says it — what is being asked, then
+  why, then the mark that shows where.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/card_prompt"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/spacing_xlarge"
+    android:paddingTop="@dimen/spacing_xxlarge"
+    android:paddingBottom="@dimen/spacing_xxlarge">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/card_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAlignment="center"
+      android:textAppearance="?attr/textAppearanceTitleLarge"
+      android:textColor="?attr/colorOnSurface"
+      tools:text="Hold the card still" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/card_message"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/spacing_small"
+      android:minLines="2"
+      android:textAlignment="center"
+      android:textAppearance="?attr/textAppearanceTitleMedium"
+      android:textColor="?attr/colorOnSurfaceVariant"
+      tools:text="Keep the smartcard on your phone." />
+
+    <FrameLayout
+      android:layout_width="@dimen/card_prompt_mark_size"
+      android:layout_height="@dimen/card_prompt_mark_size"
+      android:layout_marginTop="@dimen/spacing_xlarge">
+
+      <!--
+        The mark with the wait drawn into it rather than around it, which is how the Yubico
+        Authenticator does it: the ring is not a second circle outside the icon, it stands where
+        the icon's own outer circle was. The middle of the mark is cut out of it into the ring,
+        and the ring is the whole of the circle — turning while the card is being worked, closed
+        and still while it has yet to arrive.
+      -->
+      <FrameLayout
+        android:id="@+id/card_mark_framed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+          android:id="@+id/card_mark_clip"
+          android:layout_width="@dimen/card_prompt_mark_core"
+          android:layout_height="@dimen/card_prompt_mark_core"
+          android:layout_gravity="center">
+
+          <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/card_mark"
+            android:layout_width="@dimen/card_prompt_mark_size"
+            android:layout_height="@dimen/card_prompt_mark_size"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_contactless_24dp"
+            app:tint="?attr/colorPrimary" />
+
+        </FrameLayout>
+
+        <!--
+          The ring, in two parts: one always there and still, and one that turns over it while the
+          card is being worked. Same colour, same width, same circle — the still one is a plain
+          drawable rather than a second indicator, so that no state of the prompt and no moment
+          between two of them can leave the mark standing without it.
+
+          Both are the same size and draw their stroke inside it. The indicator's own inset is
+          taken away: left in, it scales the whole arc down to fit, and the turning part runs
+          thinner and inside the still one, which shows round its edges.
+        -->
+        <View
+          android:id="@+id/card_ring"
+          android:layout_width="@dimen/card_prompt_ring_size"
+          android:layout_height="@dimen/card_prompt_ring_size"
+          android:layout_gravity="center"
+          android:background="@drawable/card_prompt_ring" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+          android:id="@+id/card_ring_busy"
+          android:layout_width="@dimen/card_prompt_ring_size"
+          android:layout_height="@dimen/card_prompt_ring_size"
+          android:layout_gravity="center"
+          android:indeterminate="true"
+          android:visibility="gone"
+          app:indicatorColor="?attr/colorPrimary"
+          app:indicatorInset="0dp"
+          app:indicatorSize="@dimen/card_prompt_ring_size"
+          app:indicatorTrackGapSize="0dp"
+          app:trackColor="@android:color/transparent"
+          app:trackThickness="@dimen/card_prompt_ring_thickness"
+          tools:visibility="visible" />
+
+      </FrameLayout>
+
+      <!-- A mark that is not a card and has no waiting in it: the touch, and the tick at the end. -->
+      <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/card_mark_plain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:visibility="gone"
+        app:tint="?attr/colorPrimary"
+        tools:src="@drawable/ic_done_24dp" />
+
+    </FrameLayout>
+
+  </LinearLayout>
+
+  <!-- The way out, where a sheet puts it, and only while there is something to back out of. -->
+  <androidx.appcompat.widget.AppCompatImageButton
+    android:id="@+id/card_close"
+    android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:layout_gravity="top|end"
+    android:layout_margin="@dimen/spacing_small"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:contentDescription="@string/dialog_cancel"
+    android:scaleType="center"
+    android:src="@drawable/ic_close_24dp"
+    app:tint="?attr/colorOnSurfaceVariant" />
+
+</FrameLayout>

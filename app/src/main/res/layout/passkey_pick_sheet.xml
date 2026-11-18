@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2014-2026 The Android Password Store Authors. All Rights Reserved.
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<!--
+  Which of the accounts the security key holds a passkey for to sign in with: a heading saying what the rows are, and
+  the keys as one block of rows under it, as the other sheets that ask for a choice set them out.
+  The rows are added in code, one per account.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  android:paddingHorizontal="@dimen/password_list_margin"
+  android:paddingBottom="@dimen/spacing_large">
+
+  <include
+    android:id="@+id/passkey_pick_header"
+    layout="@layout/list_section_header" />
+
+  <space.valasiadis.passkeyenabler.ui.ListBlock
+    android:id="@+id/passkey_pick_rows"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+</LinearLayout>

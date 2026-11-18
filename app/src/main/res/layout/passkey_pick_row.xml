@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2014-2026 The Android Password Store Authors. All Rights Reserved.
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<!--
+  One account the security key holds a passkey for: the sheets' icon row, with a second line under
+  the name for what tells two accounts apart when their names do not.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  style="@style/Widget.APS.ListIconRow">
+
+  <androidx.appcompat.widget.AppCompatImageView
+    style="@style/Widget.APS.ListIconRow.Icon"
+    android:src="@drawable/ic_passkey_24dp" />
+
+  <LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/list_icon_text_gap"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:paddingVertical="@dimen/spacing_medium">
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/passkey_pick_title"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textAppearance="?attr/textAppearanceTitleMedium"
+      android:textColor="?attr/colorOnSurface"
+      tools:text="Alice" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+      android:id="@+id/passkey_pick_detail"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:ellipsize="end"
+      android:maxLines="2"
+      android:textAppearance="?attr/textAppearanceBodyMedium"
+      android:textColor="?attr/colorOnSurfaceVariant"
+      tools:text="alice@example.com" />
+
+  </LinearLayout>
+
+</LinearLayout>

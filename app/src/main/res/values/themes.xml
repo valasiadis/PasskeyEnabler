@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright © 2014-2026 The Android Password Store Authors. All Rights Reserved.
+  ~ SPDX-License-Identifier: GPL-3.0-only
+  -->
+
+<resources>
+
+  <!--
+    The Password Store fork's theme, less its own palette: every phone this runs on (Android 14 and
+    up) has dynamic colours, which the application lays over this.
+  -->
+  <style name="Theme.Passkey" parent="Theme.Material3.DayNight.NoActionBar">
+    <item name="android:colorBackground">?attr/colorSurfaceContainer</item>
+    <item name="android:statusBarColor">?android:colorBackground</item>
+    <item name="android:navigationBarColor">?android:colorBackground</item>
+    <item name="bottomSheetDialogTheme">@style/Theme.Passkey.BottomSheetDialog</item>
+    <item name="materialAlertDialogTheme">@style/Theme.Passkey.MaterialAlertDialog</item>
+  </style>
+
+  <!--
+    For the screen the system opens when the security key is picked: nothing of its own, only the
+    sheets that rise over whatever asked for the passkey.
+  -->
+  <style name="Theme.Passkey.Translucent">
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:backgroundDimEnabled">false</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+    <item name="android:windowAnimationStyle">@null</item>
+  </style>
+
+  <!--
+    What comes up over a screen stands a step above it: the screen is the surface container, so the
+    sheets stand on the high one, as in the fork.
+  -->
+  <style name="Theme.Passkey.BottomSheetDialog" parent="ThemeOverlay.Material3.BottomSheetDialog">
+    <item name="bottomSheetStyle">@style/Theme.Passkey.BottomSheet</item>
+    <item name="android:windowIsFloating">false</item>
+    <item name="android:statusBarColor">@android:color/transparent</item>
+    <item name="android:navigationBarColor">@android:color/transparent</item>
+  </style>
+
+  <style name="Theme.Passkey.BottomSheet" parent="Widget.Material3.BottomSheet.Modal">
+    <item name="backgroundTint">?attr/colorSurfaceContainerHigh</item>
+  </style>
+
+  <style name="Theme.Passkey.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+    <item name="alertDialogStyle">@style/Theme.Passkey.MaterialAlertDialogStyle</item>
+    <item name="buttonBarNegativeButtonStyle">@style/Theme.Passkey.DialogButton.Quiet</item>
+    <item name="buttonBarPositiveButtonStyle">@style/Theme.Passkey.DialogButton.Action</item>
+    <item name="materialAlertDialogBodyTextStyle">@style/Theme.Passkey.DialogMessage</item>
+  </style>
+
+  <style name="Theme.Passkey.MaterialAlertDialogStyle" parent="MaterialAlertDialog.Material3">
+    <item name="backgroundTint">?attr/colorSurfaceContainerHighest</item>
+  </style>
+
+  <style name="Theme.Passkey.DialogMessage" parent="MaterialAlertDialog.Material3.Body.Text">
+    <item name="android:paddingBottom">20dp</item>
+  </style>
+
+  <!-- The one button that goes on, filled, as every sheet fills its action. -->
+  <style name="Theme.Passkey.DialogButton.Action" parent="Widget.Material3.Button">
+    <item name="android:layout_marginStart">@dimen/spacing_small</item>
+  </style>
+
+  <!-- The way back out, which is not the action being offered. -->
+  <style name="Theme.Passkey.DialogButton.Quiet" parent="Widget.Material3.Button.TextButton.Dialog">
+    <item name="android:textColor">@color/dialog_quiet_button_text</item>
+  </style>
+
+</resources>

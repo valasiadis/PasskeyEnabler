@@ -1,0 +1,16 @@
+.gradle/
+build/
+local.properties
+.idea/
+*.iml
+.kotlin/
+
+# Signing keys: never commit
+*.jks
+*.keystore
+*.jks.b64
+
+# Editor swap files
+*.swp
+*.swo
+*~
