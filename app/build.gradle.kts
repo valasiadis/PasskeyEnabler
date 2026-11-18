@@ -22,9 +22,9 @@ android {
         // The credential provider API arrived in Android 14.
         minSdk = 34
         targetSdk = 37
-        // Set by the release workflow from the git tag (v1.2.3 -> "1.2.3", 10203).
+        // Set by the release workflow from the git tag (v0.1.0 -> "0.1.0", 100).
         versionCode = System.getenv("VERSION_CODE")?.toInt() ?: 1
-        versionName = System.getenv("VERSION_NAME") ?: "1.0"
+        versionName = System.getenv("VERSION_NAME") ?: "0.1.0"
     }
 
     signingConfigs {
